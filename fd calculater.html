@@ -1,0 +1,53 @@
+<html>
+    <script>
+function updateInvestmentValue(value){
+    document.getElementById("investment-value").innerHTML = value;
+}
+
+function updateInterestValue(value){
+    document.getElementById("interest-rate-value").innerHTML = value + "%";
+}
+
+function updateDurationValue(value){
+    document.getElementById("time-period-value").innerHTML = value + " years";
+}
+
+function calculateFD(){
+    let investment = document.getElementById("investment").value;
+    let interest = document.getElementById("interest").value;
+    let time = document.getElementById("time-period").value;
+
+    let finalAmount = investment * Math.pow((1 + interest / 100), time);
+
+    document.getElementById("invested-amount").innerHTML = investment;
+    document.getElementById("final-amount").innerHTML = finalAmount.toFixed(2);
+}
+</script>
+    <body>
+        <link rel="stylesheet" href="fd calculater.css">
+        <div class="calculator">
+        <h1>FD CALCULATOR</h1>
+        <div class="input-section">
+            <label for="investment">Total Investment:</label>
+            <input type="range" id="investment" min="1000" max="100000" step="1000" value="10000" oninput="updateInvestmentValue(this.value)">
+            <span id="investment-value">10000</span>
+            </div>
+            <div class="input-section">
+                <label for="interest">Rate of Interest</label>
+                <input type="range" id="interest" min="1" max="15" step="0.1" value="5" oninput="updateInterestValue(this.value)">
+                <span id="interest-rate-value">5%</span>
+            </div>
+            <div class="input-section">
+                <label for="time-period">Duration (Years)</label>
+                <input type="range" id="time-period" min="1" max="30" step="1" value="5" oninput="updateDurationValue(this.value)">
+                <span id="time-period-value">5 years</span>
+            
+            </div>
+            <button onclick="calculateFD()">INVEST NOW</button>
+            <div class="output-section">
+               <p>Invested amount: <span id="invested-amount">----</span></p>
+               <p>Final amount: <span id="final-amount">----</span></p>
+            </div>
+        </div>
+    </body>
+</html>

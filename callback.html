@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="text" id="demo" onkeyup="kite(this.value,crane)"/>
+        <p id="new"></p>
+        <script>
+           function kite(k,callback){
+            callback(k);
+            }
+            function crane(value){
+                document.getElementById("new").innerHTML = value;
+            }
+        </script>
+    </body>
+</html>
